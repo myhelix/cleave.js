@@ -1,4 +1,4 @@
-# Cleave.js Documentation 
+# Cleave.js Documentation
 
 [Documentation](https://github.com/nosir/cleave.js/blob/master/doc/doc.md) > [JavaScript API](https://github.com/nosir/cleave.js/blob/master/doc/js-api.md) > Options
 
@@ -23,6 +23,7 @@
     - [prefix](#prefix)
     - [rawValueTrimPrefix](#rawvaluetrimprefix)
     - [numericOnly](#numericonly)
+    - [alphaNumericOnly](#alphaNumericonly)
     - [uppercase](#uppercase)
     - [lowercase](#lowercase)
 
@@ -264,7 +265,7 @@ When delimiters array is defined, single [delimiter](#delimiter) option is ignor
 ```js
 new Cleave('.my-input', {
     blocks: [3, 3, 3, 2],
-    delimiters: ['.', '.', '-'] 
+    delimiters: ['.', '.', '-']
 });
 ```
 
@@ -313,6 +314,12 @@ new Cleave('.my-input', {
 A `Boolean` value indicates if it only allows numeric letters (0-9).
 
 Ignored by `creditCard` and `date` shortcuts mode, the value will always be `true`.
+
+**Default value**: `false`
+
+### `alphaNumericOnly`
+
+A `Boolean` value indicates if it only allows alphanumeric characters (A-Z a-z 0-9).
 
 **Default value**: `false`
 

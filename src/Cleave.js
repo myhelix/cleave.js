@@ -199,6 +199,9 @@ Cleave.prototype = {
         // strip non-numeric characters
         value = pps.numericOnly ? Util.strip(value, /[^\d]/g) : value;
 
+        // strip non-alphanumeric characters
+        value = pps.alphaNumericOnly ? Util.strip(value, /[^\w]/g) : value;
+
         // convert case
         value = pps.uppercase ? value.toUpperCase() : value;
         value = pps.lowercase ? value.toLowerCase() : value;
@@ -332,7 +335,7 @@ Cleave.Util = require('./utils/Util');
 Cleave.DefaultProperties = require('./common/DefaultProperties');
 
 // for angular directive
-((typeof global === 'object' && global) ? global : window)["Cleave"] = Cleave;
+((typeof global === 'object' && global) ? global : window)['Cleave'] = Cleave;
 
 // CommonJS
 module.exports = Cleave;

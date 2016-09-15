@@ -255,6 +255,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // strip non-numeric characters
 	        value = pps.numericOnly ? Util.strip(value, /[^\d]/g) : value;
 
+	        // strip non-alphanumeric characters
+	        value = pps.alphaNumericOnly ? Util.strip(value, /[^\w]/g) : value;
+
 	        // convert case
 	        value = pps.uppercase ? value.toUpperCase() : value;
 	        value = pps.lowercase ? value.toLowerCase() : value;
@@ -388,7 +391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Cleave.DefaultProperties = __webpack_require__(6);
 
 	// for angular directive
-	((typeof global === 'object' && global) ? global : window)["Cleave"] = Cleave;
+	((typeof global === 'object' && global) ? global : window)['Cleave'] = Cleave;
 
 	// CommonJS
 	module.exports = Cleave;
@@ -908,6 +911,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        // others
 	        target.numericOnly = target.creditCard || target.date || !!opts.numericOnly;
+	        target.alphaNumericOnly = !!opts.alphaNumericOnly;
 
 	        target.uppercase = !!opts.uppercase;
 	        target.lowercase = !!opts.lowercase;
@@ -942,7 +946,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = DefaultProperties;
-
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 

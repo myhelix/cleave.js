@@ -304,6 +304,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // strip non-numeric characters
 	        value = pps.numericOnly ? Util.strip(value, /[^\d]/g) : value;
 
+	        // strip non-alphanumeric characters
+	        value = pps.alphaNumericOnly ? Util.strip(value, /[^\w]/g) : value;
+
 	        // convert case
 	        value = pps.uppercase ? value.toUpperCase() : value;
 	        value = pps.lowercase ? value.toLowerCase() : value;
@@ -907,6 +910,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        // others
 	        target.numericOnly = target.creditCard || target.date || !!opts.numericOnly;
+	        target.alphaNumericOnly = !!opts.alphaNumericOnly;
 
 	        target.uppercase = !!opts.uppercase;
 	        target.lowercase = !!opts.lowercase;
