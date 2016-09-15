@@ -200,7 +200,7 @@ Cleave.prototype = {
         value = pps.numericOnly ? Util.strip(value, /[^\d]/g) : value;
 
         // strip non-alphanumeric characters
-        value = pps.alphaNumericOnly ? Util.strip(value, /[^\W]/g) : value;
+        value = pps.alphaNumericOnly ? Util.strip(value, /[^\A-Za-z0-9]/g) : value;
 
         // convert case
         value = pps.uppercase ? value.toUpperCase() : value;
