@@ -36,6 +36,7 @@ var DefaultProperties = {
 
         // others
         target.numericOnly = target.creditCard || target.date || !!opts.numericOnly;
+        target.alphaNumericOnly = !!opts.alphaNumericOnly;
 
         target.uppercase = !!opts.uppercase;
         target.lowercase = !!opts.lowercase;
@@ -70,4 +71,3 @@ var DefaultProperties = {
 };
 
 module.exports = DefaultProperties;
-

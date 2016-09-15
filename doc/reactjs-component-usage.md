@@ -1,4 +1,4 @@
-# Cleave.js Documentation 
+# Cleave.js Documentation
 
 [Documentation](https://github.com/nosir/cleave.js/blob/master/doc/doc.md) > ReactJS component usage
 
@@ -56,14 +56,16 @@ class MyComponent extends React.Component {
         super(props, context);
 
         this.state = {
-            creditCardRawValue: '',
-            phoneRawValue:      '',
-            customRawValue:     ''
+            creditCardRawValue:         '',
+            phoneRawValue:              '',
+            customRawValue:             '',
+            customRawAlphaNumericValue: ''
         };
-        
+
         this.onCreditCardChange = this.onCreditCardChange.bind(this);
         this.onPhoneChange = this.onPhoneChange.bind(this);
         this.onCustomChange = this.onCustomChange.bind(this);
+        this.onCustomAlphaNumericChange = this.onCustomAlphaNumericChange.bind(this);
     }
 
     onCreditCardChange(event) {
@@ -78,6 +80,10 @@ class MyComponent extends React.Component {
         this.setState({customRawValue: event.target.rawValue});
     }
 
+    onCustomAlphaNumericChange(event) {
+      this.setState({customRawValue: event.target.rawValue});
+    }
+
     render() {
         return (
             <div>
@@ -90,10 +96,14 @@ class MyComponent extends React.Component {
                 <Cleave options={{blocks: [4,3,3], delimiter: '-', numericOnly: true}}
                         onChange={this.onCustomChange}/>
 
+                <Cleave options={{blocks: [4,3,3], delimiter: '-', alphaNumericOnly: true}}
+                        onChange={this.onCustomAlphaNumericChange}/>
+
                 <div>
                     <p>credit card: {this.state.creditCardRawValue}</p>
                     <p>phone: {this.state.phoneRawValue}</p>
                     <p>custom: {this.state.customRawValue}</p>
+                    <p>custom alphaNumeric: {this.state.customRawAlphaNumericValue}</p>
                 </div>
             </div>
         );
@@ -151,7 +161,7 @@ var MyComponent = React.createClass({
     onCreditCardChange: function (event) {
         // formatted pretty value
         console.log(event.target.value);
-        
+
         // raw value
         console.log(event.target.rawValue);
     },
@@ -184,7 +194,7 @@ Then config your shim with [browserify-shim](https://github.com/thlorenz/browser
 
 ## How does it work?
 
-As you can see, here you simply use `<Cleave/>` as a normal `<input/>` field 
+As you can see, here you simply use `<Cleave/>` as a normal `<input/>` field
 
 - Attach HTML `<input/>` attributes
 
@@ -197,9 +207,9 @@ As you can see, here you simply use `<Cleave/>` as a normal `<input/>` field
 - Add ReactJS `onChange` event listener
 
     Internally it interpolates native React `onChange` and `onKeyDown` events, does all the formatting magic and triggers the event callback.
-    
+
     The only thing getting added to the event object is the `rawValue` (delimiter stripped value) of the input field, that you might be interested in.
-    
+
     In the example above, we get the `rawValue` and update its `state` in handler, eventually it will be passed to backend or `store` layer.
 
 ## References
