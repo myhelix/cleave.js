@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var _ = require('underscore');
 
 var NumeralFormatter = require('./shortcuts/NumeralFormatter');
 var DateFormatter = require('./shortcuts/DateFormatter');
@@ -293,16 +294,15 @@ var Cleave = React.createClass({
 
     render: function () {
         var owner = this,
-            { value, options, onKeyDown, onChange, onInit, ...propsToTransfer } = owner.props;
+            { ...propsToTransfer } = _.omit(owner.props, ['value', 'options', 'onKeyDown', 'onChange', 'onInit']);
 
         return (
             <input
+                {...propsToTransfer}
                 type="text"
                 value={owner.state.value}
                 onKeyDown={owner.onKeyDown}
                 onChange={owner.onChange}
-                {...propsToTransfer}
-                propsToIgnore={[value, options, onKeyDown, onChange, onInit]}
             />
         );
     }
